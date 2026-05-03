@@ -134,11 +134,13 @@ export default function Home() {
       <header className="hero" style={{ overflow: 'hidden', position: 'relative' }}>
         {/* Parallax Animated background blobs */}
         <motion.div 
+          className="bg-blob"
           animate={{ scale: [1, 1.2, 1], rotate: [0, 90, 0] }}
           transition={{ duration: 20, repeat: Infinity, ease: 'linear' }}
           style={{ position: 'absolute', top: '10%', left: '20%', width: '500px', height: '500px', background: 'radial-gradient(circle, rgba(65,105,225,0.2) 0%, transparent 60%)', filter: 'blur(60px)', zIndex: 0, y: yBg }}
         />
         <motion.div 
+          className="bg-blob"
           animate={{ scale: [1, 1.5, 1], rotate: [0, -90, 0] }}
           transition={{ duration: 25, repeat: Infinity, ease: 'linear' }}
           style={{ position: 'absolute', bottom: '10%', right: '10%', width: '400px', height: '400px', background: 'radial-gradient(circle, rgba(65,105,225,0.15) 0%, transparent 60%)', filter: 'blur(50px)', zIndex: 0, y: yBg }}
