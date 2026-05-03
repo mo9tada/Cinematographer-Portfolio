@@ -1,0 +1,64 @@
+.Navbar {
+  position: fixed;
+  top: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3rem;
+  padding: 15px 40px;
+  border-radius: 50px;
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  color: #fff;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .Navbar {
+    gap: 1rem;
+    padding: 12px 20px;
+    width: 90%;
+    max-width: 400px;
+  }
+  .Navbar a {
+    font-size: 0.8rem;
+  }
+}
+
+.Navbar a {
+  font-weight: 500;
+  letter-spacing: 1px;
+  position: relative;
+  transition: color 0.3s;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+}
+
+.Navbar a::after {
+  content: '';
+  position: absolute;
+  width: 0%;
+  height: 2px;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--accent);
+  transition: width 0.3s ease;
+}
+
+.Navbar a:hover,
+.Navbar a.active {
+  color: var(--accent);
+}
+
+.Navbar a:hover::after,
+.Navbar a.active::after {
+  width: 100%;
+}
