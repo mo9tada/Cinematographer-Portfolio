@@ -22,13 +22,16 @@
 
 @media (max-width: 768px) {
   .Navbar {
-    gap: 1rem;
-    padding: 12px 20px;
-    width: 90%;
-    max-width: 400px;
+    gap: 0.5rem;
+    padding: 10px 15px;
+    width: 92%;
+    max-width: 380px;
+    border-radius: 40px;
+    top: 1rem;
   }
   .Navbar a {
     font-size: 0.8rem;
+    padding: 6px 12px !important;
   }
 }
 

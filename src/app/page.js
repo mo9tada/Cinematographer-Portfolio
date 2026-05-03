@@ -62,15 +62,6 @@ function VideoCard({ vid, setSelectedVideo }) {
     yElement.set(0);
   };
 
-  const getThumbnailUrl = (url) => {
-    if (!url) return '';
-    const match = url.match(/\/d\/([a-zA-Z0-9_-]+)/);
-    if (match && match[1]) {
-      return `https://drive.google.com/thumbnail?id=${match[1]}&sz=w800`;
-    }
-    return '';
-  };
-
   return (
     <motion.div
       ref={cardRef}
@@ -90,13 +81,9 @@ function VideoCard({ vid, setSelectedVideo }) {
         transition={{ type: "spring", stiffness: 300, damping: 20 }}
       >
         <img 
-          src={getThumbnailUrl(vid.videoUrl) || vid.thumb} 
+          src={vid.thumb} 
           alt={vid.title} 
           className="video-thumbnail"
-          onError={(e) => {
-            // Fallback to exactly what the Unsplash (or custom) thumbnail is if Google Drive blocks the image
-            if (e.target.src !== vid.thumb) e.target.src = vid.thumb;
-          }}
         />
         <div className="video-overlay" style={{ flexDirection: 'column', gap: '15px' }}>
           <motion.div 
@@ -183,6 +170,7 @@ export default function Home() {
           </motion.p>
           <motion.div variants={textVariants} style={{ marginTop: '2rem' }}>
              <motion.button 
+               className="hero-button"
                whileHover={{ scale: 1.05, boxShadow: "0 0 25px rgba(65,105,225,0.6)", backgroundColor: "var(--accent)" }}
                whileTap={{ scale: 0.95 }}
                style={{ padding: '16px 45px', fontSize: '1rem', textTransform: 'uppercase', letterSpacing: '3px', background: 'transparent', color: '#fff', border: '2px solid var(--accent)', borderRadius: '40px', cursor: 'pointer', transition: 'background-color 0.3s' }}
@@ -230,7 +218,7 @@ export default function Home() {
             onClick={() => setSelectedVideo(null)}
           >
             <motion.div 
-              className="video-modal glass"
+              className={`video-modal glass ${selectedVideo.isReel ? 'reel' : ''}`}
               initial={{ scale: 0.8, opacity: 0, rotateX: 20, y: 100 }}
               animate={{ scale: 1, opacity: 1, rotateX: 0, y: 0 }}
               exit={{ scale: 0.8, opacity: 0, rotateX: -20, y: 100 }}
